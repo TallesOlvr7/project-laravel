@@ -11,7 +11,8 @@ class Invoice extends Model
 
     protected $fillable = [
         'invoice_code',
-        'purchase_id'
+        'purchase_id',
+        'created_at'
     ];
 
     public function purchase()

@@ -12,7 +12,7 @@ class Product extends Model
     protected $fillable = [
         'name',
         'amount',
-        'value'
+        'prize'
     ];
 
     public function purchases()

@@ -9,18 +9,21 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->integer('amount');
-            $table->decimal('prize');
+            $table->foreignId('genre_id')->constrained('genres');
+            $table->date('year');
+            $table->string('edition');
+            $table->string('synopsis');
+            $table->string('publisher');
+            $table->integer('amount')->default(0);
             $table->timestamps();
         });
     }
 
-
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('books');
     }
 };

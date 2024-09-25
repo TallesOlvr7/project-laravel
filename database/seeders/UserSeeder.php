@@ -9,7 +9,7 @@ use Str;
 
 class UserSeeder extends Seeder
 {
-    public function createAdmin()
+    public function createAdminUser()
     {
         return User::create([
             'name' => 'Talles',
@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
     }
     public function run(): void
     {
+        $this->createAdminUser();
         User::factory(15)->create();
-        $this->createAdmin();
     }
 }

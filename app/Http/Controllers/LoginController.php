@@ -11,8 +11,9 @@ class LoginController extends Controller
     protected $loginService;
 
     public function __construct
-    (LoginService $loginService)
-    {
+    (
+        LoginService $loginService
+    ) {
         $this->loginService = $loginService;
     }
     public function create()
@@ -22,9 +23,9 @@ class LoginController extends Controller
 
     public function login(LoginRequest $loginRequest)
     {
-        if(!$this->loginService->authenticate($loginRequest->validated())){
+        if (!$this->loginService->authenticate($loginRequest->validated())) {
             return redirect()->route('login.create')->withErrors([
-                'invalid'=>'E-mail ou senha incorretos'
+                'invalid' => 'E-mail ou senha incorretos'
             ]);
         }
 

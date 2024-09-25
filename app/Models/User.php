@@ -15,10 +15,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'type'
+        'type',
+        'status'
     ];
 
     protected $hidden = [
+        'document_id',
         'password',
         'remember_token',
     ];
@@ -30,9 +32,5 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public function purchases()
-    {
-        return $this->belongsToMany(Purchase::class);
-    }
+    
 }

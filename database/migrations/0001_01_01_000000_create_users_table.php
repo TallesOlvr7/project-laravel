@@ -13,9 +13,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->enum('type', ['cliente', 'administrador'])->default('cliente');
             $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->enum('type', ['aluno', 'secretaria'])->default('aluno');
+            $table->string('document_id')->unique();
+            $table->enum('status', ['active', 'inactive','banned'])->default('active');
             $table->rememberToken();
             $table->timestamps();
         });

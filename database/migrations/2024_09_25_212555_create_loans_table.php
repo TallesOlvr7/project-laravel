@@ -9,18 +9,21 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('purchases', function (Blueprint $table) {
+        Schema::create('loans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('book_id')->constrained('books');
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('product_id')->constrained('products');
-            $table->enum('type', ['parcelada', 'avista']);
-            $table->decimal('prize');
+            $table->dateTime('devolution_date');
+            $table->dateTime('due_date');
+            $table->integer('renewals')->default(0);
+            $table->enum('status',['agendado','emprestado'])->default('agendado');
             $table->timestamps();
         });
     }
 
+
     public function down(): void
     {
-        Schema::dropIfExists('purchases');
+        Schema::dropIfExists('loans');
     }
 };

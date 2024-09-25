@@ -9,10 +9,12 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('invoices', function (Blueprint $table) {
+        Schema::create('ban_records', function (Blueprint $table) {
             $table->id();
-            $table->string('invoice_code')->unique();
-            $table->foreignId('purchase_id')->constrained('purchases');
+            $table->foreignId('user_id')->constrained('user');
+            $table->dateTime('ban_duration');
+            $table->dateTime('finish_date');
+            $table->string('motive');
             $table->timestamps();
         });
     }
@@ -20,6 +22,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('invoices');
+        Schema::dropIfExists('ban_records');
     }
 };

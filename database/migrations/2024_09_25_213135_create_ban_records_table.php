@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('ban_records', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('user');
+            $table->foreignId('user_id')->constrained('users');
             $table->dateTime('ban_duration');
             $table->dateTime('finish_date');
             $table->string('motive');

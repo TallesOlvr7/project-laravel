@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->foreignId('genre_id')->constrained('genres');
+            $table->integer('loans_quantity')->default(0);
             $table->date('year');
             $table->string('edition');
             $table->string('synopsis');

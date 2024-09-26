@@ -28,6 +28,7 @@ class LoginController extends Controller
                 'invalid' => 'E-mail ou senha incorretos'
             ]);
         }
+        
 
         return redirect()->route('home.index');
     }
